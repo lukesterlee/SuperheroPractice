@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * Created by Willee on 6/11/15.
  */
+
+// TODO : 2. implement this custom adapter.
 public class SuperpersonAdapter extends BaseAdapter {
 
     private Context mContext;

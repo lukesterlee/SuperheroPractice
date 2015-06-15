@@ -39,12 +39,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         initializeViews();
-
         initializeDatas();
-
 
         new AsyncLoader().execute();
 
@@ -101,8 +97,15 @@ public class MainActivity extends ActionBarActivity {
 
     private class AsyncLoader extends AsyncTask<Void, Void, List<Superperson>> {
 
+
         @Override
         protected List<Superperson> doInBackground(Void... params) {
+
+            /*
+             * TODO : 1. implement this method.
+             * Step 1 - get superpersonList
+             * Step 2 - get each character's image picture Url from json file then return the list.
+             */
 
             List<Superperson> list = superpersonList;
 
@@ -152,6 +155,7 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(List<Superperson> superpersons) {
 
+            // TODO : 3. implement this method.
             adapter = new SuperpersonAdapter(getApplicationContext(), superpersons);
             mListView.setAdapter(adapter);
         }
