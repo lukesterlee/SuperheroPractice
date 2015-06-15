@@ -101,51 +101,13 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected List<Superperson> doInBackground(Void... params) {
 
-            /*
-             * TODO : 1. implement this method.
-             * Step 1 - get superpersonList
-             * Step 2 - get each character's image picture Url from json file then return the list.
-             */
-
+            // TODO : 1. implement this method, get each character's image picture Url from json file then return the list.
             List<Superperson> list = superpersonList;
 
-            for (Superperson person : list) {
-
-                String url = ENDPOINT + person.getName();
 
 
-                try {
-                    URL jsonUrl = new URL(url);
-                    HttpsURLConnection connection = null;
-                    connection = (HttpsURLConnection) jsonUrl.openConnection();
-                    connection.setConnectTimeout(0);
-                    connection.setReadTimeout(0);
-                    InputStream in = connection.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                    StringBuilder builder = new StringBuilder();
-                    String line = null;
-                    while ((line = reader.readLine()) != null) {
-                        builder.append(line + "\n");
-                    }
-                    String jsonString = builder.toString();
-
-                    JSONObject jsonObject = new JSONObject(jsonString);
-                    JSONObject response = jsonObject.getJSONObject("responseData");
-                    JSONArray results = response.getJSONArray("results");
-                    JSONObject first = (JSONObject) results.get(0);
-                    String pictureUrl = first.getString("tbUrl");
-
-                    person.setPictureUrl(pictureUrl);
 
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
 
 
 
@@ -156,8 +118,7 @@ public class MainActivity extends ActionBarActivity {
         protected void onPostExecute(List<Superperson> superpersons) {
 
             // TODO : 3. implement this method.
-            adapter = new SuperpersonAdapter(getApplicationContext(), superpersons);
-            mListView.setAdapter(adapter);
+
         }
     }
 }
